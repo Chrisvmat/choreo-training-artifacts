@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -53,7 +54,9 @@ function UserMenu() {
             <Typography textAlign="center">My Reservations</Typography>
           </Button>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+        onClick={() => { sessionStorage.removeItem("userInfo"); window.location.href = `/auth/logout?session_hint=${Cookies.get('session_hint')}`; }}
+        >
           <Button style={{ textTransform: "none" }}>
             <Typography textAlign="center">Logout</Typography>
           </Button>
